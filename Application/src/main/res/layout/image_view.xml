@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="544dp" >
+
+        <ImageView
+            android:id="@+id/imageViewBitmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="false"
+            android:minHeight="10dp" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="240dp">
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="191dp"
+            android:layout_height="wrap_content"
+            android:onClick="back"
+            android:text="Tilbake" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="188dp"
+            android:layout_height="wrap_content"
+            android:onClick="readImage"
+            android:text="readImage" />
+
+    </TableRow>
+
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/layout-v21/notification_action_tombstone.xml"
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+    }
+]

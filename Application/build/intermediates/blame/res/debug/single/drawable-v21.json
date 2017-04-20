@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/drawable-v21/notification_action_background.xml"
+    },
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    }
+]
