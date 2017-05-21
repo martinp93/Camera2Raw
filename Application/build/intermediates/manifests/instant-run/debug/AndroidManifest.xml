@@ -46,7 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.android.camera2raw.DisplayMessageActivity" />
+        <activity android:name="com.example.android.camera2raw.ViewActivity" />
 
         <provider
             android:name="com.android.tools.fd.runtime.InstantRunContentProvider"

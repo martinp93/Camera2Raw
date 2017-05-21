@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span><a name="line.1"></a>
+<span class="sourceLineNo">002</span>package imageapi.help;<a name="line.2"></a>
+<span class="sourceLineNo">003</span><a name="line.3"></a>
+<span class="sourceLineNo">004</span>import imageapi.*;<a name="line.4"></a>
+<span class="sourceLineNo">005</span>import imageapi.tools.*;<a name="line.5"></a>
+<span class="sourceLineNo">006</span><a name="line.6"></a>
+<span class="sourceLineNo">007</span>/**<a name="line.7"></a>
+<span class="sourceLineNo">008</span> * This class contains documentation for terms used in the rest of the API.<a name="line.8"></a>
+<span class="sourceLineNo">009</span> * &lt;p&gt;<a name="line.9"></a>
+<span class="sourceLineNo">010</span> * There is no use of this in any type of image processing, but to serve as a type of javadoc index page.<a name="line.10"></a>
+<span class="sourceLineNo">011</span> * &lt;p&gt;<a name="line.11"></a>
+<span class="sourceLineNo">012</span> * Although there is already an index page in generated javadocs, this will be a placeholder for the terms used as not to cause confusion within other classes.<a name="line.12"></a>
+<span class="sourceLineNo">013</span> */<a name="line.13"></a>
+<span class="sourceLineNo">014</span>public class Terminology {<a name="line.14"></a>
+<span class="sourceLineNo">015</span>  /**<a name="line.15"></a>
+<span class="sourceLineNo">016</span>   * A decomposed image where the individual values in its matrix contain information of a single color. This is often the same RAW data retrieved from an image sensor.<a name="line.16"></a>
+<span class="sourceLineNo">017</span>   */<a name="line.17"></a>
+<span class="sourceLineNo">018</span>  public BayerImage BAYER_IMAGE;<a name="line.18"></a>
+<span class="sourceLineNo">019</span><a name="line.19"></a>
+<span class="sourceLineNo">020</span>  /**<a name="line.20"></a>
+<span class="sourceLineNo">021</span>  * A composite image is an image where the color composites of a pixel (Alpha channel, Reds, Greens and Blues) are contained in single values (32-bit integer numbers).<a name="line.21"></a>
+<span class="sourceLineNo">022</span>  * &lt;p&gt;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>  * This is opposed to a Bayer Image, where each individual value in its matrix represents only a single channel of color.<a name="line.23"></a>
+<span class="sourceLineNo">024</span>  */<a name="line.24"></a>
+<span class="sourceLineNo">025</span>  public CompositeImage COMPOSITE_IMAGE;<a name="line.25"></a>
+<span class="sourceLineNo">026</span><a name="line.26"></a>
+<span class="sourceLineNo">027</span>  /**<a name="line.27"></a>
+<span class="sourceLineNo">028</span>  * Used to denote a single color component in an entire image or a single pixel.<a name="line.28"></a>
+<span class="sourceLineNo">029</span>  * &lt;p&gt;<a name="line.29"></a>
+<span class="sourceLineNo">030</span>  * "Channel" and "Component" may be used interchangeably, though "channel" is used to refer more to the hexadecimal digit pair in an integer value (represented hexadeciamally).<a name="line.30"></a>
+<span class="sourceLineNo">031</span>  * &lt;p&gt;<a name="line.31"></a>
+<span class="sourceLineNo">032</span>  * "A single color channel" / "A single color component."<a name="line.32"></a>
+<span class="sourceLineNo">033</span>  */<a name="line.33"></a>
+<span class="sourceLineNo">034</span>  public String CHANNEL, COMPONENT;<a name="line.34"></a>
+<span class="sourceLineNo">035</span><a name="line.35"></a>
+<span class="sourceLineNo">036</span>  /**<a name="line.36"></a>
+<span class="sourceLineNo">037</span>  * The integer pixel contains a number representing the color information of a pixel.<a name="line.37"></a>
+<span class="sourceLineNo">038</span>  * &lt;p&gt;<a name="line.38"></a>
+<span class="sourceLineNo">039</span>  * The value spans from 0x00000000 to 0xFFFFFFFF (hexadecimal notation), which is 32-bits.<a name="line.39"></a>
+<span class="sourceLineNo">040</span>  * &lt;p&gt;<a name="line.40"></a>
+<span class="sourceLineNo">041</span>  * Each pair of two hexadecimal digits represents a color channel. In an example: 0xFFAABBCC, the digits FF represent a channel, the digits AA represent another and so on.<a name="line.41"></a>
+<span class="sourceLineNo">042</span>  * &lt;p&gt;<a name="line.42"></a>
+<span class="sourceLineNo">043</span>  * The color channels are: Alpha, Red, Green, Blue, or ARGB for short. And in our example over the pairs follow this abbreviation. (FF - Alpha, AA - Red, BB - Green, CC - Blue).<a name="line.43"></a>
+<span class="sourceLineNo">044</span>  * &lt;p&gt;<a name="line.44"></a>
+<span class="sourceLineNo">045</span>  * Every pair of two hexadecimal digits make up 8 bits of depth, 256 different values int the domain [0 - 255].<a name="line.45"></a>
+<span class="sourceLineNo">046</span>  */<a name="line.46"></a>
+<span class="sourceLineNo">047</span>  public int INTEGER_PIXEL;<a name="line.47"></a>
+<span class="sourceLineNo">048</span><a name="line.48"></a>
+<span class="sourceLineNo">049</span>  /**<a name="line.49"></a>
+<span class="sourceLineNo">050</span>  * The integer pixel matrix contains integer pixel values in a grid with the same dimensions of its image. It is essentially the image data.<a name="line.50"></a>
+<span class="sourceLineNo">051</span>  */<a name="line.51"></a>
+<span class="sourceLineNo">052</span>  public int[][] INTEGER_PIXEL_MATRIX;<a name="line.52"></a>
+<span class="sourceLineNo">053</span><a name="line.53"></a>
+<span class="sourceLineNo">054</span>  /**<a name="line.54"></a>
+<span class="sourceLineNo">055</span>   * Equivalent to the principle of an array or a grid; a two-dimensional object containing values with height and width; a rectangle with smaller rectangles inside it, and each rectangle holds a value; boxes with numbers within a bigger box, capiche?<a name="line.55"></a>
+<span class="sourceLineNo">056</span>   */<a name="line.56"></a>
+<span class="sourceLineNo">057</span>  public int[][] MATRIX;<a name="line.57"></a>
+<span class="sourceLineNo">058</span><a name="line.58"></a>
+<span class="sourceLineNo">059</span>  /**<a name="line.59"></a>
+<span class="sourceLineNo">060</span>   * To map a value from it's original domain (eg [0 - 255]), to the zero-to-one-domain.<a name="line.60"></a>
+<span class="sourceLineNo">061</span>   * &lt;p&gt;<a name="line.61"></a>
+<span class="sourceLineNo">062</span>   * Pseudo code:<a name="line.62"></a>
+<span class="sourceLineNo">063</span>   * &lt;p&gt; maximum possible value = 20;<a name="line.63"></a>
+<span class="sourceLineNo">064</span>   * &lt;p&gt; value = 5;<a name="line.64"></a>
+<span class="sourceLineNo">065</span>   * &lt;p&gt; new_value = normalize(value);<a name="line.65"></a>
+<span class="sourceLineNo">066</span>   * &lt;p&gt; reading out new_value gives us 0.25, because 5 / 20 = 0.25.<a name="line.66"></a>
+<span class="sourceLineNo">067</span>   * &lt;p&gt;<a name="line.67"></a>
+<span class="sourceLineNo">068</span>   * The normalizing operation is just a simple division, and the ratio between the value and its possible maximum is the normalized value.<a name="line.68"></a>
+<span class="sourceLineNo">069</span>   * &lt;p&gt;<a name="line.69"></a>
+<span class="sourceLineNo">070</span>   * This ratio can also be used to map the value to other domains if we multiply it with a new maximum.<a name="line.70"></a>
+<span class="sourceLineNo">071</span>   *<a name="line.71"></a>
+<span class="sourceLineNo">072</span>   */<a name="line.72"></a>
+<span class="sourceLineNo">073</span>  public String NORMALIZE;<a name="line.73"></a>
+<span class="sourceLineNo">074</span><a name="line.74"></a>
+<span class="sourceLineNo">075</span>  /**<a name="line.75"></a>
+<span class="sourceLineNo">076</span>   * A pixel is referred to as the smallest component in an image, containing information for all color channels at that point.<a name="line.76"></a>
+<span class="sourceLineNo">077</span>   * &lt;p&gt;<a name="line.77"></a>
+<span class="sourceLineNo">078</span>   * If you zoom in extremely close on an image, the single-coloured squares that would be able to differentiate are these pixels.<a name="line.78"></a>
+<span class="sourceLineNo">079</span>   * &lt;p&gt;<a name="line.79"></a>
+<span class="sourceLineNo">080</span>   * Pixels are also the unit of length and size in an image. ie 200 x 200 pixels would be a square image with dimensions of length 200, and its &lt;em&gt;size&lt;/em&gt; would be product of these: 200 x 200 = 40 000 pixels.<a name="line.80"></a>
+<span class="sourceLineNo">081</span>   */<a name="line.81"></a>
+<span class="sourceLineNo">082</span>  public String PIXEL;<a name="line.82"></a>
+<span class="sourceLineNo">083</span><a name="line.83"></a>
+<span class="sourceLineNo">084</span>  /**<a name="line.84"></a>
+<span class="sourceLineNo">085</span>  * A design pattern used to describe any class that encapsulates underlying code logic for the sake of abstraction and useability.<a name="line.85"></a>
+<span class="sourceLineNo">086</span>  */<a name="line.86"></a>
+<span class="sourceLineNo">087</span>  public String WRAPPER_CLASS;<a name="line.87"></a>
+<span class="sourceLineNo">088</span>}<a name="line.88"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>

@@ -1,25 +1,16 @@
 package com.example.android.camera2raw;
 
         import android.app.Activity;
-        import android.content.Context;
-        import android.content.ContextWrapper;
-        import android.content.Intent;
         import android.graphics.Bitmap;
         import android.graphics.BitmapFactory;
-        import android.graphics.Color;
-        import android.os.Bundle;
         import android.os.Environment;
-        import android.support.v7.app.AppCompatActivity;
-        import android.util.Base64;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.ImageView;
-        import android.widget.ProgressBar;
+        import imageapi.Blur;
+        import imageapi.CompositeImage;
+        import imageapi.Gradient;
+        import imageapi.Luminance;
 
         import java.io.File;
         import java.io.FileOutputStream;
-        import java.io.IOException;
 
 /**
  * Created by martin on 16.01.17.
@@ -32,23 +23,33 @@ public class Helper extends Activity {
         this.value = value;
     }
 
-    public void setBitmap(Bitmap bitmap, String info){
+
+    public void setBitmap(Bitmap bitmap){
+        System.out.println("START at value"+value );
+        CompositeImage composit = bitmapToComposit(bitmap);
         switch (value) {
-            case 0:  bitmap=setGreen(bitmap,info);
+            case 0:  //do noting
                 break;
-            case 1:  bitmap=setBlue(bitmap,info);
+            case 1:
+                composit=Blur.linearBlur(composit,50);
+                bitmap = compositToBitmap(composit);
                 break;
-            case 2:  bitmap=setRed(bitmap,info);
+            case 2:
+                composit=Luminance.getLuminance(composit);
+                composit=Gradient.getGradient(composit);
+                bitmap=compositToBitmap(composit);
                 break;
-            case 3:  bitmap=luminance(bitmap);
+            case 3:
+                composit=Luminance.getLuminance(composit);
+                bitmap=compositToBitmap(composit);
                 break;
-            case 4:  bitmap=setRed(bitmap,info);
+            case 4:
                 break;
-            case 5:  bitmap=setRed(bitmap,info);
+            case 5:
                 break;
-            case 6:  bitmap=setRed(bitmap,info);
+            case 6:
                 break;
-            case 7:  bitmap=setRed(bitmap,info);
+            case 7:  //do noting
                 break;
             default: System.out.println("*************DEFAULT VALUE*****");
                 break;
@@ -78,10 +79,30 @@ public class Helper extends Activity {
             }
     }
 
+
+    public Bitmap compositToBitmap(CompositeImage compositeImage){
+        compositeImage.getWidth();
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inMutable = true;
+        Bitmap bm = Bitmap.createBitmap(compositeImage.getWidth(),compositeImage.getHeight(), Bitmap.Config.ARGB_8888);
+        for (int i =0; i<compositeImage.getHeight();i++){
+            for (int j=0; j<compositeImage.getWidth();j++){
+                int pixel=compositeImage.getPixel(j,i);
+                bm.setPixel(j,i,pixel);
+            }
+        }
+        return bm;
+    }
+    public CompositeImage bitmapToComposit(Bitmap bm){
+        CompositeImage compositeImage=new CompositeImage(bm);
+        return compositeImage;
+    }
+
+
     public Bitmap setGreen (Bitmap bitmap, String hex){
         try {
-            for (int i = 0; i < bitmap.getHeight()/10; i++) {
-                for (int j = 0; j < bitmap.getWidth()/10; j++) {
+            for (int i = 0; i < bitmap.getHeight(); i++) {
+                for (int j = 0; j < bitmap.getWidth(); j++) {
                     int pixel = bitmap.getPixel(j, i);
                     String inn="";
                     inn = "0000"+hex+"00";
@@ -100,8 +121,8 @@ public class Helper extends Activity {
 
     public Bitmap setRed (Bitmap bitmap, String hex){
         try {
-            for (int i = 0; i < bitmap.getHeight()/10; i++) {
-                for (int j = 0; j < bitmap.getWidth()/10; j++) {
+            for (int i = 0; i < bitmap.getHeight(); i++) {
+                for (int j = 0; j < bitmap.getWidth(); j++) {
                     int pixel = bitmap.getPixel(j, i);
                     String inn="";
                     inn = "00"+hex+"0000";
@@ -120,8 +141,8 @@ public class Helper extends Activity {
 
     public Bitmap setBlue (Bitmap bitmap, String hex){
         try {
-            for (int i = 0; i < bitmap.getHeight()/10; i++) {
-                for (int j = 0; j < bitmap.getWidth()/10; j++) {
+            for (int i = 0; i < bitmap.getHeight(); i++) {
+                for (int j = 0; j < bitmap.getWidth(); j++) {
                     int pixel = bitmap.getPixel(j, i);
                     String inn="";
                     inn = "000000"+hex+"";
@@ -138,25 +159,6 @@ public class Helper extends Activity {
         }
         return bitmap;
     }
-    public static Bitmap luminance(Bitmap bitmap) {
-        int grey =0;
-        int color =0;
-        for (int i=0;i<bitmap.getHeight()/10;i++){
-            for (int j=0;j<bitmap.getWidth()/10;j++){
-                int pixel = bitmap.getPixel(j,i);
-                double red = (double) (pixel >> 16 & 0xFF) / 255.0;
-                red = red < 0.03928 ? red / 12.92 : Math.pow((red + 0.055) / 1.055, 2.4);
-                double green = (double) (pixel >> 8 & 0xFF) / 255.0;
-                green = green < 0.03928 ? green / 12.92 : Math.pow((green + 0.055) / 1.055, 2.4);
-                double blue = (double) (pixel & 0xFF) / 255.0;
-                blue = blue < 0.03928 ? blue / 12.92 : Math.pow((blue + 0.055) / 1.055, 2.4);
-                grey = (int)(((0.2126 * red) + (0.7152 * green) + (0.0722 * blue)) * 255);
-                color = (255 << 24) + (grey << 16) + (grey << 8) + grey;
-                bitmap.setPixel(j, i, color);
-            }
-            System.out.println(color+" "+grey);
-        }
-        return bitmap;
-    }
+
 }
 

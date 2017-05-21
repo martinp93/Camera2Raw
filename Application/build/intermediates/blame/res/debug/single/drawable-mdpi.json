@@ -6,5 +6,9 @@
     {
         "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-mdpi/ic_action_info.png",
         "source": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/src/main/res/drawable-mdpi/ic_action_info.png"
+    },
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-mdpi/frontpage.png",
+        "source": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/src/main/res/drawable-mdpi/frontpage.png"
     }
 ]

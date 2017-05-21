@@ -52,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="f5c1769ef9e323a5933afdddfe420c6e6bf97a63">
+        sha1="eab0f5b0ab3bf63978f91784525c16af3e35ad3e">
         <dex dex="/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_0a5c076aac8bba27d40dcfc37f9220018b39eda5/classes.dex" />
     </item>
     <item

@@ -4,21 +4,62 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="544dp" >
+        android:layout_height="500dp">
 
-        <ImageView
-            android:id="@+id/imageViewBitmap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="false"
-            android:minHeight="10dp" />
+        <RelativeLayout
+            android:id="@+id/relative_container"
+            android:layout_width="wrap_content"
+            android:layout_height="500dp">
+
+            <ImageView
+                android:id="@+id/imageViewBitmap"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:adjustViewBounds="false"
+                android:minHeight="10dp"
+                android:scaleType="centerCrop" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="false"
+                android:paddingTop="200dp"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+
+
     </TableRow>
 
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="240dp">
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="editImage"
+            android:text="Rediger" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/button5"

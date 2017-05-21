@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="planets_array">
-        <item>Grønn</item>
-        <item>Blå</item>
-        <item>Rød</item>
-        <item>4d</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
+        <item>Ingen</item>
+        <item>Uskarphet</item>
+        <item>Gradient</item>
+        <item>Gråskala</item>
+        <item>Ingen</item>
+        <item>Ingen</item>
+        <item>Ingen</item>
+        <item>Ingen</item>
     </string-array>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -337,8 +337,9 @@
     <integer name="abc_config_activityShortDur">150</integer>
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="OpenCamera">Kamera</string>
     <string name="ReadFile">Les fil</string>
-    <string name="Ta_DNG_Bilde">Ta DNG Bilde</string>
+    <string name="Ta_DNG_Bilde">Ta Bilde</string>
     <string name="WriteToFile">Skriv til fil</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -371,25 +372,17 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="app_name">Camera2Raw</string>
+    <string name="app_name">Image API Test App</string>
     <string name="back">Tilbake</string>
     <string name="description_info">Info</string>
+    <string name="edit">Bruk API</string>
     <string name="edit_message">Rediger melding</string>
     <string name="info">Info</string>
-    <string name="intro_message">
-        
-        
-            
-            This sample demonstrates how to use the Camera2 API to capture RAW
-            camera buffers and save them as DNG files.
-            
-        
-        
-    </string>
-    <string name="picture">Picture</string>
-    <string name="request_permission">This app needs camera permission.</string>
+    <string name="picture">Bilde</string>
+    <string name="request_permission">Denne appen trenger tilganger.</string>
     <string name="search_menu_title">Search</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="title">Test App</string>
     <string name="turnoff">Skru av Kamera</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>

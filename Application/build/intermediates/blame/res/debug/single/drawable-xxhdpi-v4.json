@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png",
-        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png"
-    },
-    {
         "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_pressed_holo_dark.9.png",
         "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/drawable-xxhdpi-v4/abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png",
+        "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/drawable-xxhdpi-v4/abc_list_longpressed_holo.9.png"
     },
     {
         "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png",

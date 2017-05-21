@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-hdpi/frontpage.png",
+        "source": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/src/main/res/drawable-hdpi/frontpage.png"
+    },
+    {
         "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/drawable-hdpi/ic_action_info.png",
         "source": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/src/main/res/drawable-hdpi/ic_action_info.png"
     },

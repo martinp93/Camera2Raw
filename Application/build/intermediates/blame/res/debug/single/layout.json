@@ -8,10 +8,6 @@
         "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/layout/abc_dialog_title_material.xml"
     },
     {
-        "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/layout/activity_display_message.xml",
-        "source": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/src/main/res/layout/activity_display_message.xml"
-    },
-    {
         "merged": "/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
         "source": "/home/martin/.android/build-cache/b969d0b8166f08c39ccf13ae76f1edc282634ba0/output/res/layout/abc_activity_chooser_view_list_item.xml"
     },

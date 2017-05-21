@@ -14,25 +14,28 @@
  limitations under the License.
 -->
 <resources>
-    <string name="picture">Picture</string>
+    <string name="picture">Bilde</string>
     <string name="description_info">Info</string>
-    <string name="request_permission">This app needs camera permission.</string>
+    <string name="request_permission">Denne appen trenger tilganger.</string>
     <string name="info">Info</string>
-    <string name="Ta_DNG_Bilde">Ta DNG Bilde</string>
+    <string name="Ta_DNG_Bilde">Ta Bilde</string>
     <string name="back">Tilbake</string>
     <string name="turnoff">Skru av Kamera</string>
     <string name="edit_message">Rediger melding</string>
     <string name="WriteToFile">Skriv til fil</string>
     <string name="ReadFile">Les fil</string>
+    <string name="title">Test App</string>
+    <string name="edit">Bruk API</string>
+    <string name="OpenCamera">Kamera</string>
 
     <string-array name="planets_array">
-        <item>Grønn</item>
-        <item>Blå</item>
-        <item>Rød</item>
-        <item>4d</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
+        <item>Ingen</item>
+        <item>Uskarphet</item>
+        <item>Gradient</item>
+        <item>Gråskala</item>
+        <item>Ingen</item>
+        <item>Ingen</item>
+        <item>Ingen</item>
+        <item>Ingen</item>
     </string-array>
 </resources>

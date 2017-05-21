@@ -1,0 +1,67 @@
+// Sett String'en under til teksten med rådata!
+String in = "";                             // <------- Input-string
+int width = 3120;                           // <------- Bytt ut med en bredde (3120 er vanlig på min tlf, men vet ikke om denne verdien er rett før vi får testet det).
+
+in = in.replace('-', '\u002D');
+
+String[] values = in.split(" ");            // <------- Antar her at de er separert med mellomrom. Bare bytt ut det som står
+byte[] bytes = new byte[values.length];     //          i hermetegn om ikke :)
+
+for (int i = 0; i < values.length; i++) {
+  bytes[i] = Byte.decode(values[i]);
+}
+
+int x = 0;
+
+Double calculationLength = new Double(bytes.length * (2.0 / 3.0));
+short length = calculationLength.shortValue();
+
+short[] pixels = new short[length];
+
+short pixel1, pixel2;
+for (int i = 0; i < bytes.length; i += 3) {
+  pixel1 = (short)bytes[i];
+  pixel2 = (short)bytes[i+1];
+  pixel1 <<= 4; pixel2 <<= 4;
+
+  Integer integer = new Integer(bytes[i+2]);
+  String bitString = Integer.toBinaryString(integer);
+  String resultString = "00000000" + bitString;
+  String lastByte = resultString.substring(bitString.length());
+
+  short result1 = 0, result2 = 0;
+
+  for (int j = 0; j < 4; j++) {
+    result1 += Math.pow(2, 3-j) * (Character.getNumericValue(lastByte.charAt(j)));
+  }
+
+  pixel2 += result1;
+
+  for (int j = 4; j < 8; j++) {
+    result2 += Math.pow(2, 7-j) * (Character.getNumericValue(lastByte.charAt(j)));
+  }
+
+  pixel1 += result2;
+
+  pixels[x] = pixel1;
+  pixels[x+1] = pixel2;
+  x += 2;
+}
+
+int rowNumber = -1;
+int y = 0;
+
+Double calculationHeight = new Double(pixels.length / width);
+short height = calculationHeight.shortValue();
+
+if (height < 1) height = 1;
+
+short[][] finishedProduct = new short[height][width];
+
+for (int i = 0; i < pixels.length; i++) {
+  if (i % width == 0) {
+    rowNumber++;
+  }
+  x = i - (width * rowNumber);
+  finishedProduct[rowNumber][x] = pixels[i];
+}

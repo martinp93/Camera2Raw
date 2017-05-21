@@ -24,13 +24,10 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.Point;
@@ -53,7 +50,6 @@ import android.media.Image;
 import android.media.ImageReader;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -73,23 +69,14 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
-import java.nio.ShortBuffer;
-import java.nio.channels.Channel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,11 +91,6 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import com.example.android.camera2raw.Helper;
-
-import static android.R.attr.data;
-import static android.R.attr.process;
-import static android.R.attr.value;
-import static android.R.id.message;
 
 /**
  * A fragment that demonstrates use of the Camera2 API to capture RAW and JPEG photos.
@@ -369,14 +351,7 @@ public class Camera2RawFragment extends Fragment
      */
     private long mCaptureTimer;
 
-
     //**********************************************************************************************
-    private static int progress;
-
-    public Spinner spinner;
-
-    public static int value;
-
 
     /**
      * {@link CameraDevice.StateCallback} is called when the currently active {@link CameraDevice}
@@ -388,8 +363,6 @@ public class Camera2RawFragment extends Fragment
         public void onOpened(CameraDevice cameraDevice) {
             // This method is called when the camera is opened.  We start camera preview here if
             // the TextureView displaying this has been set up.
-
-
             synchronized (mCameraStateLock) {
                 mState = STATE_OPENED;
                 mCameraOpenCloseLock.release();
@@ -597,7 +570,10 @@ public class Camera2RawFragment extends Fragment
                 finishedCaptureLocked();
             }
 
-            showToast(sb.toString());
+            /*
+             * showToast fjernet på grunn av bug på første bilde.
+             */
+            //showToast(sb.toString());
         }
 
         @Override
@@ -639,19 +615,9 @@ public class Camera2RawFragment extends Fragment
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
-        Activity activity = getActivity();
+        //Sett onClickListerner on Picture and Back buttons
         view.findViewById(R.id.picture).setOnClickListener(this);
         view.findViewById(R.id.button2).setOnClickListener(this);
-
-        //add spinner
-        spinner = (Spinner) activity.findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(activity, R.array.planets_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-
-
-
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
 
         // Setup a new OrientationEventListener.  This is used to handle rotation events like a
@@ -711,27 +677,15 @@ public class Camera2RawFragment extends Fragment
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
-//***********************************************************************************
-
-
-    //**************************************************************************************
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.picture: {
-                Activity activity = getActivity();
-                Spinner mySpinner=(Spinner) activity.findViewById(R.id.spinner);
-                //value = Integer.parseInt(getResources().getStringArray(R.array.planets_array)[mySpinner.getSelectedItemPosition()]) ;
-                value = mySpinner.getSelectedItemPosition();
-                System.out.println("VALUE********= "+value);
                 takePicture();
-
-
-
                 break;
             }
-
+            //Back button, get back to Main view
             case R.id.button2: {
                 Activity activity = getActivity();
                 closeCamera();
@@ -1421,11 +1375,13 @@ public class Camera2RawFragment extends Fragment
             mContext = context;
             mReader = reader;
 
-            ringProgressDialog = ProgressDialog.show(context, "Please wait ...", "Downloading Image ...", true);
+            /*
+             * Dialog to user
+             * Wait for the image to be taken and saved
+             */
+            ringProgressDialog = ProgressDialog.show(context, "Please wait ...", "Taking and Saving Image ...", true);
             ringProgressDialog.setCancelable(true);
         }
-
-
 
         @Override
         public void run() {
@@ -1436,34 +1392,36 @@ public class Camera2RawFragment extends Fragment
                     ByteBuffer buffer = mImage.getPlanes()[0].getBuffer();
                     byte[] bytes = new byte[buffer.remaining()];
                     buffer.get(bytes);
-
-
-                    Bitmap bitmap = null;
                     BitmapFactory.Options options = new BitmapFactory.Options();
                     options.inMutable = true;
-                    bitmap = BitmapFactory.decodeByteArray(bytes, 0,bytes.length, options);
+                    options.inSampleSize=4;
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0,bytes.length,options);
                     if(bitmap != null){
                         try {
-                            System.out.println("**********STARTED");
                             Looper.prepare();
-                            Helper helper=new Helper(value);
-                            helper.setBitmap(bitmap,"FF");
+                            Helper helper=new Helper(5);
+                            helper.SetImage(bitmap);
                         }
                         catch (Exception e) {
                         }
-
                     }
-                    if(bitmap==null){
-                        System.out.println("Bitmap JPEG==NULL **************************");
-                    }
-
                     break;
                 }
                 case ImageFormat.RAW_SENSOR: {
 /*
                     ByteBuffer buffer = mImage.getPlanes()[0].getBuffer();
                     byte[] bytes = new byte[buffer.remaining()];
-                    buffer=buffer.get(bytes);
+                    buffer.get(bytes);
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inMutable = true;
+                    options.inSampleSize=20;
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0,bytes.length,options);
+
+                    if(bitmap == null){
+                        System.out.println("BRA****");
+                        System.out.println(bitmap.getPixel(100,100));
+
+                    }
 
                     System.out.println("Bufferreader*************"+buffer.limit()+"");
                     System.out.println("mImage width height***********"+mImage.getWidth()+" "+mImage.getHeight()+" planes length "+mImage.getPlanes().length);
@@ -1623,7 +1581,6 @@ public class Camera2RawFragment extends Fragment
                         output = new FileOutputStream(mFile);
                         dngCreator.writeImage(output, mImage);
                         success = true;
-                        Log.i(TAG, "hei:"+ mImage);
                     } catch (IOException e) {
                         e.printStackTrace();
                     } finally {
