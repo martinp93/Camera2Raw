@@ -1,60 +1,25 @@
+Sammendrag
+-----------------------------------
+I denne hovedrapporten av bacheloroppgaven presenteres arbeidet som er gjort i prosjektet “Bildeprosesserings-app og -API for Android Mobiler”. Rapporten er skrevet av to Dataingeniørstudenter ved NTNU og ble skrevet i tidsrommet januar 2017 til mai 2017.
+Målet med oppgaven var å lage et API som tar i bruk algoritmer utformet av andre ansatte ved NTNU og bruke disse på en Android-enhet. APIet skal testes på en Android telefon og resultatet vil bli vurdert visuelt. En annen type vurdering er sett på som unødvendig og utenfor denne oppgavens retningslinjer.
+Vår visjon er å lage et raskt og enkelt verktøy som kan brukes til å utføre algoritmer som viser (visuelle) detaljer og informasjon i bildet som ellers ikke kommer så godt fram i det originale bildet. Men informasjon og utdypning om dette kommer senere i oppgaven.
+Oppgaven ble gitt av Hans Jakob, med interesse for bilderedigering. Hans Jakob er førsteamenuensis ved instituttet for datateknologi og informatikk med en rekke publikasjoner omhandlende bildebehandlingsalgoritmer.
 
-Android Camera2Raw Sample
-===================================
 
-This sample demonstrates using the Camera2 API to capture a JPEG and RAW sensor frame.
-Check the source code to see a typical example of how to display the camera preview;
-run auto-focus, auto-exposure metering, and auto-white-balance; capture a JPEG and
-RAW image for the same sensor frame; and save these into MediaStore for use in other
-applications.
+Takk til
+-----------------------------
 
-Introduction
-------------
-
-The [Camera2 API][1] allows users to capture RAW images, i.e. unprocessed pixel data
-directly from the camera sensor that has not yet been converted into a format and
-colorspace typically used for displaying and storing images viewed by humans.  The
-[DngCreator][2] class is provided as part of the Camera2 API as a utility for saving
-RAW images as DNG files.
-
-This sample displays a live camera preview in a TextureView, and saves JPEG and DNG
-file for each image captured.
-
-[1]: https://developer.android.com/reference/android/hardware/camera2/package-summary.html
-[2]: https://developer.android.com/reference/android/hardware/camera2/DngCreator.html
-
-Pre-requisites
---------------
-
-- Android SDK 25
-- Android Build Tools v25.0.2
-- Android Support Repository
-
-Screenshots
--------------
-
-<img src="screenshots/main.png" height="400" alt="Screenshot"/> 
-
-Getting Started
----------------
-
-This sample uses the Gradle build system. To build this project, use the
-"gradlew build" command or use "Import Project" in Android Studio.
-
-Support
--------
-
-- Google+ Community: https://plus.google.com/communities/105153134372062985968
-- Stack Overflow: http://stackoverflow.com/questions/tagged/android
-
-If you've found an error in this sample, please file an issue:
+Takk til følgende git prosjekt som har hjulpet oss med kameradelen i denne koden:
 https://github.com/googlesamples/android-Camera2Raw
 
-Patches are encouraged, and may be submitted by forking this project and
-submitting a pull request through GitHub. Please see CONTRIBUTING.md for more details.
 
-License
--------
+Informasjon
+----------------------------
+
+Deler av applikasjonen er ikke vår egen kode. Det er derfor viktig å merke seg at bildetakingen i denne applikasjonen ikke er vår egen. Se git prosjektet for lånt kode. Koden er beskyttet av Apache License 2.0 [1]http://www.apache.org/licenses/LICENSE-2.0. Videre arbeid med denne koden må derfor beholde denne lisensen. Android-applikasjonen består av 3 views som brukeren navigerer rundt. Disse er koblet opp til ulike kontrollører i applikasjonen som håndterer dataflyten, og hva som kan vises for brukeren betinget av konteksten. Figuren nedenfor viser hvordan hvordan “Views”, “Controllers” og Helper (fungerer som en “Model”), fungerer sammen for å bruke API’et.
+
+Lisens for lånt kode
+----------------------------
 
 Copyright 2016 The Android Open Source Project, Inc.
 

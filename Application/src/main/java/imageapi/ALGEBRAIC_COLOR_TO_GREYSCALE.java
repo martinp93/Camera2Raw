@@ -1,8 +1,11 @@
 
 package imageapi;
 
+import imageapi.CompositeImage;
+
 /**
- * Work in pregress.
+ * Work in progress.
+ * Based on "Algebraic Color to Grayscale" by Alsam, Rivertz [Proceedings of the IASTED International Conference, Signal and Image Processing, 2012]
  */
 public class ALGEBRAIC_COLOR_TO_GREYSCALE extends ImageOperation {
 

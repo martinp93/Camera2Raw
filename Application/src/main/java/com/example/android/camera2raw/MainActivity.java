@@ -12,14 +12,19 @@ import android.widget.ImageView;
 
 public class MainActivity extends Activity {
     ImageView imageView=null;
+
+    //Create mainactivity and set view for first page
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Lode logo into the view
         imageView=(ImageView) findViewById(R.id.imageView);
         imageView.setImageResource(R.drawable.frontpage);
     }
 
+    //Start a cameraActivity to take pictures and save them ass
     public void toCameraView(View view){
         setContentView(R.layout.activity_camera);
         getFragmentManager().beginTransaction()

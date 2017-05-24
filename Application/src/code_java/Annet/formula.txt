@@ -1,7 +1,0 @@
-// Formula:
-// H: Difference image
-// I: Original image
-// D: Gaussian filter
-
-// H = I - D * I
-// I (j+1) = H (gamma) + D * I (j)

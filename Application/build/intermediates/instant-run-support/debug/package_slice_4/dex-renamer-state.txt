@@ -1,4 +1,4 @@
-#Sat May 20 16:12:24 CEST 2017
+#Wed May 24 12:14:59 CEST 2017
 base.0=/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4
 renamed.0=classes.dex
 file.0=/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex

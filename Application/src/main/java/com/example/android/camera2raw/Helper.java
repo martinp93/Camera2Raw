@@ -23,33 +23,26 @@ public class Helper extends Activity {
         this.value = value;
     }
 
-
+    //This method uses the API to edit the image and then save the image
     public void setBitmap(Bitmap bitmap){
-        System.out.println("START at value"+value );
+
+        //Create a compositimage to use in API methodes and classes.
         CompositeImage composit = bitmapToComposit(bitmap);
         switch (value) {
             case 0:  //do noting
                 break;
-            case 1:
-                composit=Blur.linearBlur(composit,50);
+            case 1: //blure the image
+                composit=Blur.linearBlur(composit,10);
                 bitmap = compositToBitmap(composit);
                 break;
-            case 2:
+            case 2: //make luminance then find the gradient of the image
                 composit=Luminance.getLuminance(composit);
                 composit=Gradient.getGradient(composit);
                 bitmap=compositToBitmap(composit);
                 break;
-            case 3:
+            case 3: //Create luminance (grayscale)
                 composit=Luminance.getLuminance(composit);
                 bitmap=compositToBitmap(composit);
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            case 7:  //do noting
                 break;
             default: System.out.println("*************DEFAULT VALUE*****");
                 break;
@@ -57,29 +50,33 @@ public class Helper extends Activity {
         SetImage(bitmap);
     }
 
+    //This metod saves the image and checks ofer errors
     public void SetImage(Bitmap bitmap) {
-            File file = new File(Environment.getExternalStorageDirectory(), "/basics/output.png");
-            file.getParentFile().mkdirs();
-            try {
-                    if (file.exists()) {
-                            file.delete();
-                            System.out.println("FILE DELETED");
-                    }
-                    if (file.createNewFile()) {
-                            FileOutputStream outputStream = new FileOutputStream(file);
-                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-                            outputStream.close();
-                            System.out.println("File created!");
-                    } else {
-                            System.out.println("File not created!");
-                    }
-            } catch (Exception e) {
-                    e.printStackTrace();
-                    System.out.println("Failed to create file");
+        //Set the path for the saved image
+        File file = new File(Environment.getExternalStorageDirectory(), "/basics/output.png");
+        file.getParentFile().mkdirs();
+
+        //Save the image
+        try {
+            //Check for existing files and delete it
+            if (file.exists()) {
+                    file.delete();
             }
+            //create the new file
+            if (file.createNewFile()) {
+                    FileOutputStream outputStream = new FileOutputStream(file);
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+                    outputStream.close();
+            } else {
+                    System.out.println("File not created!");
+            }
+        } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Failed to create file");
+        }
     }
 
-
+    //Convert compositimage to bitmap for saving the image ass png
     public Bitmap compositToBitmap(CompositeImage compositeImage){
         compositeImage.getWidth();
         BitmapFactory.Options options = new BitmapFactory.Options();
@@ -93,11 +90,14 @@ public class Helper extends Activity {
         }
         return bm;
     }
+    //Make a Compositimage out of the data in the bimap
     public CompositeImage bitmapToComposit(Bitmap bm){
         CompositeImage compositeImage=new CompositeImage(bm);
         return compositeImage;
     }
 
+    //Metodes bellow is not used
+    //Sets an givven value to the image in RED, BLUE or GREEN
 
     public Bitmap setGreen (Bitmap bitmap, String hex){
         try {

@@ -3,6 +3,11 @@ package imageapi.tools;
 
 import java.util.Random;
 
+/**
+ * Work in progress.
+ * Suggested: Name changed to RawDecoder.
+ * Methods are not documented as of now.
+ */
 public class LoadImageValues {
 
   // Decodes RAW16-data from Byte[] into short[]

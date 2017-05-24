@@ -4,6 +4,11 @@ package imageapi.tools;
 import imageapi.BayerImage;
 import imageapi.tools.Tools;
 
+
+/**
+ * Work in progress.
+ * Methods are not documented as of now.
+ */
 public class BayerConversionManager {
 
   public static int[][] composeImage(BayerImage rawImage) {

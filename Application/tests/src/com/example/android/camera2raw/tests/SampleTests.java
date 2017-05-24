@@ -22,12 +22,12 @@ import android.test.ActivityInstrumentationTestCase2;
 /**
 * Tests for Camera2Raw sample.
 */
-public class SampleTests extends ActivityInstrumentationTestCase2<CameraActivity> {
+public class SampleTests extends ActivityInstrumentationTestCase2<MainActivity> {
 
-    private CameraActivity mTestActivity;
+    private MainActivity mTestActivity;
 
     public SampleTests() {
-        super(CameraActivity.class);
+        super(MainActivity.class);
     }
 
     @Override

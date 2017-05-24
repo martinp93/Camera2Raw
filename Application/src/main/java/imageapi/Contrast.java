@@ -5,6 +5,9 @@ import imageapi.Gradient;
 import imageapi.Luminance;
 import imageapi.Arithmetic;
 
+/**
+ * Work in progress.
+ */
 public class Contrast extends ImageOperation {
   public static CompositeImage enhanceContrast(CompositeImage composite) {
     System.out.println("Entered method");

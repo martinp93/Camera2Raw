@@ -1,0 +1,9 @@
+#Internal package file, do not edit.
+#Sun May 21 20:48:57 CEST 2017
+1.file=/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/transforms/dex/androidTest/debug/folders/1000/1f/main/classes.dex
+1.set=DEX
+0.file=/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/resources-debug-androidTest.ap_/AndroidManifest.xml
+1.base=/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/transforms/dex/androidTest/debug/folders/1000/1f/main
+0.base=/home/martin/AndroidStudioProjects/Camera2Raw/Application/build/intermediates/res/resources-debug-androidTest.ap_
+0.set=ANDROID_RESOURCE
+count=2

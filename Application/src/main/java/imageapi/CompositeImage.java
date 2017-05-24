@@ -1,12 +1,9 @@
 
 package imageapi;
 
-
-import android.graphics.Bitmap;
-import android.widget.Toast;
-
 import imageapi.tools.Tools;
 import imageapi.tools.BayerConversionManager;
+import android.graphics.Bitmap;
 
 /**
  * Wrapper class for matrices containing integer pixel values. Contains various operations relevant to image processing.
@@ -34,17 +31,13 @@ public class CompositeImage implements ImageHolder {
    */
   private int numPixels;
 
-/* Android*/
   public CompositeImage(Bitmap bitmap) {
     width = bitmap.getWidth();
     height = bitmap.getHeight();
     numPixels = width * height;
-    int[] tabell=new int[numPixels];
 
-    bitmap.getPixels(tabell,0,width,0,0,width,height);
-    pixelMatrix = Tools.distributeRows(tabell,width);
+    pixelMatrix = getPixelsFast(bitmap);
   }
-
 
   // CONSTRUCTORS
   public CompositeImage(int[][] matrix) {
@@ -62,15 +55,7 @@ public class CompositeImage implements ImageHolder {
 
 		pixelMatrix = Tools.distributeRows(values, width);
 	}
-/*
-  public CompositeImage(BufferedImage image) {
-    width = image.getWidth();
-    height = image.getHeight();
-    numPixels = width * height;
 
-    pixelMatrix = Tools.getPixelsFast(image);
-  }
-*/
   public CompositeImage(BayerImage rawImage) {
     width = rawImage.getWidth() / 2;
     height = rawImage.getHeight() / 2;
@@ -149,12 +134,11 @@ public class CompositeImage implements ImageHolder {
     return numPixels;
   }
 
-/* Android
   public static int[][] getPixelsFast(Bitmap bitmap) {
-    int[] values = Bitmap.getPixels(bitmap, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
-    return distributeRows(values, bitmap.getWidth());
+    int[] values = new int[bitmap.getWidth()*bitmap.getHeight()];
+    bitmap.getPixels(values, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
+    return Tools.distributeRows(values, bitmap.getWidth());
   }
-*/
 
   /**
    * Extract color component matrix from image.

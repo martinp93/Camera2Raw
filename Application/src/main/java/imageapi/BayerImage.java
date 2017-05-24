@@ -7,35 +7,44 @@ package imageapi;
 public class BayerImage implements ImageHolder {
 
   /**
-   *
+   * Specifies the red bayer pattern component coordinate in a 2x2 Bayer pattern matrix.
    */
   public static final int[] RED_COORDINATE    = {1, 1};
 
+  /**
+   * Specifies the top right green bayer pattern component coordinate in a 2x2 Bayer pattern matrix.
+   */
   public static final int[] GREEN1_COORDINATE = {1, 0};
 
+  /**
+   * Specifies the bottom left green bayer pattern component coordinate in a 2x2 Bayer pattern matrix.
+   */
   public static final int[] GREEN2_COORDINATE = {0, 1};
 
+  /**
+   * Specifies the blue bayer pattern component coordinate in a 2x2 Bayer pattern matrix.
+   */
   public static final int[] BLUE_COORDINATE   = {0, 0};
 
   /**
-   *
+   * The Bayer image data matrix.
    */
-  short[][] bayerData;
+  private short[][] bayerData;
 
   /**
-   *
+   * Width of image.
    */
-  int width;
+  private int width;
 
   /**
-   *
+   * Height of image.
    */
-  int height;
+  private int height;
 
   /**
-   *
+   * Total number of pixels.
    */
-  int totalPixels;
+  private int totalPixels;
 
   public BayerImage(short[][] bayerData) {
     this.bayerData = bayerData;

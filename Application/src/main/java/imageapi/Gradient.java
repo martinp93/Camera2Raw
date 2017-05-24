@@ -3,7 +3,6 @@ package imageapi;
 
 import imageapi.tools.Tools;
 
-
 /**
  * Contains methods for gradient analysis and getting an image representation of this.
  */
@@ -62,6 +61,7 @@ public class Gradient extends ImageOperation {
     for (int i = 0; i < gradientSum.length; i++) {
       for (int j = 0; j < gradientSum[i].length; j++) {
         gradientSum[i][j] = (gradientVertical[j][i] + gradientHorizontal[i][j]) / 2;
+        // gradientSum[i][j] = (float)Math.sqrt(gradientVertical[j][i]*gradientVertical[j][i] + gradientHorizontal[i][j]*gradientHorizontal[i][j]);
       }
     }
 

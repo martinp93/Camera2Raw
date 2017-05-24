@@ -1375,12 +1375,13 @@ public class Camera2RawFragment extends Fragment
             mContext = context;
             mReader = reader;
 
-            /*
+             /*
              * Dialog to user
              * Wait for the image to be taken and saved
              */
             ringProgressDialog = ProgressDialog.show(context, "Please wait ...", "Taking and Saving Image ...", true);
             ringProgressDialog.setCancelable(true);
+
         }
 
         @Override
@@ -1392,14 +1393,20 @@ public class Camera2RawFragment extends Fragment
                     ByteBuffer buffer = mImage.getPlanes()[0].getBuffer();
                     byte[] bytes = new byte[buffer.remaining()];
                     buffer.get(bytes);
+                    //For API: Construkt an opstion for bitmapfactory
                     BitmapFactory.Options options = new BitmapFactory.Options();
+                    //For API: Make bitmap editable
                     options.inMutable = true;
+                    //For API: set sample size to 4 (smaler image)
                     options.inSampleSize=4;
+                    //For API: Create bitmap
                     Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0,bytes.length,options);
+                    //For API: check that bitmap is not null.
                     if(bitmap != null){
                         try {
                             Looper.prepare();
-                            Helper helper=new Helper(5);
+                            //For API: Create bitmap and sett inn value to 0. do noting with the image.
+                            Helper helper=new Helper(0);
                             helper.SetImage(bitmap);
                         }
                         catch (Exception e) {
@@ -1408,172 +1415,6 @@ public class Camera2RawFragment extends Fragment
                     break;
                 }
                 case ImageFormat.RAW_SENSOR: {
-/*
-                    ByteBuffer buffer = mImage.getPlanes()[0].getBuffer();
-                    byte[] bytes = new byte[buffer.remaining()];
-                    buffer.get(bytes);
-                    BitmapFactory.Options options = new BitmapFactory.Options();
-                    options.inMutable = true;
-                    options.inSampleSize=20;
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0,bytes.length,options);
-
-                    if(bitmap == null){
-                        System.out.println("BRA****");
-                        System.out.println(bitmap.getPixel(100,100));
-
-                    }
-
-                    System.out.println("Bufferreader*************"+buffer.limit()+"");
-                    System.out.println("mImage width height***********"+mImage.getWidth()+" "+mImage.getHeight()+" planes length "+mImage.getPlanes().length);
-
-
-                    Bitmap bitmap = Bitmap.createBitmap(mImage.getWidth()*2, mImage.getHeight()*2, Bitmap.Config.ARGB_8888);
-                    //255744012 er for mye del opp i 2?
-
-                    //buffer=ByteBuffer.wrap(bytes);
-                    bitmap.copyPixelsFromBuffer(buffer);
-
-
-                    int elements = buffer.remaining();
-                    if (buffer instanceof ByteBuffer) {
-                        System.out.println("Bytebuffer");
-                    } else {
-                        System.out.println("unsupported Buffer subclass");
-                    }
-
-                    long bufferBytes = (long)elements;
-                    long bitmapBytes = (long)bitmap.getWidth() * bitmap.getHeight();
-
-                    if (bufferBytes < bitmapBytes) {
-
-                        System.out.println("Buffer not large enough for pixels");
-
-                    }
-
-                    System.out.println("********bitmap "+bitmap.getByteCount()+" buffer:"+buffer.capacity());
-
-
-
-                    //Bitmap bitmap = null;
-                    //BitmapFactory.Options options = new BitmapFactory.Options();
-                    //options.inMutable = true;
-                    //options.inSampleSize = 16;
-                    //bitmap = BitmapFactory.decodeByteArray(bytes, 0,bytes.length, options);
-
-                    if(bitmap!=null){
-                        System.out.println("***********BITMAPLENGTH"+ bitmap.getWidth());
-                    }
-                    else {
-                        System.out.println("***********BITMAP NULL");
-
-                    }
-*/
-                    /*
-
-                    if(bitmap != null){
-                        try {
-                            System.out.println("**********DNG STARTED");
-                            Looper.prepare();
-                            Helper helper=new Helper(value);
-                            Bitmap bit = helper.setBitmap(bitmap,"FF");
-                            helper.SetImage(bit);
-                        }
-                        catch (Exception e) {
-                            System.out.println("**********FEIL****"+e);
-                        }
-
-                    }
-                    if(bitmap==null){
-                        System.out.println("Bitmap DNG==NULL **************************");
-                    }
-*/
-
-
-/*
-
-                    Bitmap bitmap = Bitmap.createBitmap(7000,7000, Bitmap.Config.ARGB_8888);
-                    System.out.println(bitmap.getHeight()+ "<høyde ::: bredde> "+bitmap.getWidth());
-                    bitmap.copyPixelsFromBuffer(ByteBuffer.wrap(bytes));
-
-                    getPixels(bitmap);
-                    System.out.println("Bitmap RAW********************************** \n" +
-                            "Bredde: "+bitmap.getWidth()+"\n" +
-                            "Høyde: " + bitmap.getHeight()+"\n"+
-                            "Pixel 50,50: "+Integer.toBinaryString(bitmap.getPixel(50,50))
-                    );
-                    */
-
-/*
-
-                    if(bitmap != null){
-                        getPixels(bitmap);
-                        System.out.println("Bitmap RAW********************************** \n" +
-                                "Bredde: "+bitmap.getWidth()+"\n" +
-                                "Høyde: " + bitmap.getHeight()+"\n"+
-                                "Pixel 50,50: "+Integer.toBinaryString(bitmap.getPixel(50,50))
-                        );
-
-
-
-                        //Looper.prepare();
-                        //Helper helper=new Helper();
-                        //helper.SetImage(bitmap);
-                        //System.out.println("RAW SetImage STARTET***************");
-                        File file = new File(Environment.getExternalStorageDirectory(), "/basics/output.png");
-                        file.getParentFile().mkdirs();
-                        try {
-                            System.out.println("STARTED TRY ***********");
-                            if (file.exists()) {
-                                file.delete();
-                                System.out.println("FILE DELETED");
-                            }
-                            if (file.createNewFile()) {
-                                FileOutputStream outputStream = new FileOutputStream(file);
-                                // outputStream = openFileOutput("output", Context.MODE_PRIVATE);
-                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-                                //outputStream.write(message.getBytes());
-                                outputStream.close();
-                                System.out.println("File created!");
-                            } else {
-                                System.out.println("File not created!");
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            System.out.println("Failed to create file");
-                        }
-
-                    }
-                    if(bitmap==null){
-                        System.out.println("Bitmap RAW==NULL **************************");
-                    }
-*/
-
-
-                    //asShortBuffer
-
-
-                    //String test=bytesToString(buffer);
-                    //System.out.println(test);
-
-                    /*
-                    Bitmap bitmap = null;
-                    BitmapFactory.Options options = new BitmapFactory.Options();
-                    //bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length); //Convert bytearray to bitmap
-                    if(bitmap != null){
-                        System.out.println("Bitmap ********************************** \n" +
-                                "Bredde: "+bitmap.getWidth()+"\n" +
-                                "Høyde: " + bitmap.getHeight()+"\n"+
-                                "Pixel 50,50: "+bitmap.getPixel(50,50)
-                        );
-                    }
-                    if(bitmap==null){
-                        System.out.println("Bitmap ==NULL **************************");
-                    }
-                    //for performance free the memmory allocated by the bytearray and the blob variable
-                    //getPixels(bitmap);
-
-*/
-
 
                     DngCreator dngCreator = new DngCreator(mCharacteristics, mCaptureResult);
                     FileOutputStream output = null;
@@ -1614,7 +1455,6 @@ public class Camera2RawFragment extends Fragment
                     }
                 });
             }
-            System.out.println("**********DISMISS");
             ringProgressDialog.dismiss();
         }
 
